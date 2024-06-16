@@ -34,16 +34,13 @@ $(function(){
 
 
 $(function(){
-    $("#debug_money").click(function(){
-        debug_gold();
+    $("#debug_devfund").click(function(){
+       debug_devfund();
     });
 });
 
-$(function(){
-    $("#debug_prestige").click(function(){
-        buy_prestige();
-    });
-});
+
+
 
 
 $(function(){
@@ -60,6 +57,51 @@ $(function(){
         
     });
 });
+
+// Button Click event added frontend!
+function leader_attack(leader_id)
+{
+    let address = game.leaderboard[leader_id][18];
+
+    console.log(address);
+
+    attack_address(address);
+}
+
+$(function(){
+    $("#showrig").click(function(){
+        if(window.showrig==1)
+        {
+            window.showrig = 0;
+            window.showarmy = 1;
+        }
+        else
+        {
+            window.showrig = 1;
+            window.showarmy = 0;
+        }
+    });
+});
+
+$(function(){
+    $("#showarmy").click(function(){
+        if(window.showarmy==1)
+        {
+            window.showarmy = 0;
+            window.showrig = 1;
+        }
+        else
+        {
+            window.showarmy = 1;
+            window.showrig = 0;
+        }
+    });
+});
+
+
+
+
+//$('#metamask_alert').modal('show');
 
 
 // RIG BUY
@@ -87,20 +129,31 @@ $(function(){
         });
 
 
-        // UNLOCK RIG
-        $(".unlock_rig").click(function(){
+        // BUY BUTTON ARMY!
+        $(".buy_army").click(function(){
 
-            UnlockRig($(this).closest(".card").data('card'));
+           // console.log($(this).closest(".card").data('card'));
+
+           buy_action_army($(this).closest(".card").data('card'));
 
         });
 
+
+
+        // BUY UPGRADE!
+        $(".buy_upgrade").click(function(){
+
+            buy_action_upgrade($(this).closest(".card").data('card'));
+
+        });
 
         $(".buy_booster").click(function(){
 
-            buy_booster($(this).closest(".card").data('card'));
+            buy_boost_button();
 
         });
 
+        
 
 
 });  
